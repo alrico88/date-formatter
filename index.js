@@ -19,17 +19,17 @@ const modes = {
 };
 
 /**
- * DateFormatter Class
+ * DatesFormatter Class
  *
- * @class DateFormatter
+ * @class DatesFormatter
  */
-class DateFormatter {
+class DatesFormatter {
 
   /**
-   * Creates an instance of DateFormatter.
+   * Creates an instance of DatesFormatter.
    * @param {('year'|'month'|'week'|'date')} mode Mode to use for formatting
    * @param {FormatterOptions} [options={}] Config to override default formatter strings
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   constructor(mode, options = {}) {
     this.dateFormat = this._getOption(options, 'dateFormat', 'YYYYMMDD');
@@ -42,11 +42,12 @@ class DateFormatter {
   /**
    * Get options or default values depending on config
    *
+   * @private
    * @param {FormatterOptions} options The config object
    * @param {string} property Property to look for
    * @param {string} defaultValue Default value if option is not present
    * @returns {string} The value to use for the option
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   _getOption(options, property, defaultValue) {
     return options[property] ? options[property] : defaultValue;
@@ -58,7 +59,7 @@ class DateFormatter {
    * @private
    * @param {(Date|object)} date Date to check
    * @returns {void}
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   _checkDate(date) {
     if (!moment.isDate(date) && !moment.isMoment(date)) {
@@ -72,7 +73,7 @@ class DateFormatter {
    * @private
    * @param {(Date[]|object[])} dateRange Date to check
    * @returns {void}
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   _checkDateRange(dateRange) {
     const [start, end] = dateRange;
@@ -90,7 +91,7 @@ class DateFormatter {
    * @private
    * @param {(Date|object)} date Date to check
    * @returns {object} moment instance
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   _getInstance(date) {
     return moment.isMoment(date) === true ? date : moment(date);
@@ -101,7 +102,7 @@ class DateFormatter {
    *
    * @private
    * @returns {string} The formatter string
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   _getFormatterString() {
     let formatterString;
@@ -127,7 +128,7 @@ class DateFormatter {
    *
    * @param {(Date|object)} date Date object to convert
    * @returns {string} String representation of Date
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   format(date) {
     this._checkDate(date);
@@ -141,7 +142,7 @@ class DateFormatter {
    *
    * @param {(Date[]|object[])} dateRange Date range to convert
    * @returns {string[]} String representation of Dates
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   formatRange(dateRange) {
     this._checkDateRange(dateRange);
@@ -156,7 +157,7 @@ class DateFormatter {
    * @param {string} dateString Date string to parse
    * @param {boolean} [asDate=true] Whether to output a Date object (true) or Moment object (false)
    * @returns {(Date|object)} The parsed date
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   parse(dateString, asDate = true) {
     const formatterString = this._getFormatterString();
@@ -170,7 +171,7 @@ class DateFormatter {
    * @param {string[]} dateStringRange Date strings array to parse
    * @param {boolean} [asDate=true] Whether to output a Date object (true) or Moment object (false)
    * @returns {(Date[]|object[])} The parsed dates
-   * @memberof DateFormatter
+   * @memberof DatesFormatter
    */
   parseRange(dateStringRange, asDate = true) {
     const formatterString = this._getFormatterString();
@@ -181,5 +182,5 @@ class DateFormatter {
   }
 }
 
-module.exports.DateFormatter = DateFormatter;
+module.exports.DatesFormatter = DatesFormatter;
 module.exports.modes = modes;

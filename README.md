@@ -1,16 +1,8 @@
 ## Classes
 
 <dl>
-<dt><a href="#DateFormatter">DateFormatter</a></dt>
+<dt><a href="#DatesFormatter">DatesFormatter</a></dt>
 <dd></dd>
-</dl>
-
-## Functions
-
-<dl>
-<dt><a href="#getOption">getOption(options, property, defaultValue)</a> ⇒ <code>string</code></dt>
-<dd><p>Get options or default values depending on config</p>
-</dd>
 </dl>
 
 ## Typedefs
@@ -20,62 +12,62 @@
 <dd></dd>
 </dl>
 
-<a name="DateFormatter"></a>
+<a name="DatesFormatter"></a>
 
-## DateFormatter
+## DatesFormatter
 
 **Kind**: global class
 
-- [DateFormatter](#DateFormatter)
-  - [new DateFormatter()](#new_DateFormatter_new)
+- [DatesFormatter](#DatesFormatter)
+  - [new DatesFormatter()](#new_DatesFormatter_new)
   - _instance_
-    - [.format(date)](#DateFormatter+format) ⇒ <code>string</code>
-    - [.formatRange(dateRange)](#DateFormatter+formatRange) ⇒ <code>Array.&lt;string&gt;</code>
-    - [.parse(dateString, [asDate])](#DateFormatter+parse) ⇒ <code>Date</code> \| <code>object</code>
-    - [.parseRange(dateStringRange, [asDate])](#DateFormatter+parseRange) ⇒ <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code>
+    - [.format(date)](#DatesFormatter+format) ⇒ <code>string</code>
+    - [.formatRange(dateRange)](#DatesFormatter+formatRange) ⇒ <code>Array.&lt;string&gt;</code>
+    - [.parse(dateString, [asDate])](#DatesFormatter+parse) ⇒ <code>Date</code> \| <code>object</code>
+    - [.parseRange(dateStringRange, [asDate])](#DatesFormatter+parseRange) ⇒ <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code>
   - _static_
-    - [.DateFormatter](#DateFormatter.DateFormatter)
-      - [new DateFormatter(mode, [options])](#new_DateFormatter.DateFormatter_new)
+    - [.DatesFormatter](#DatesFormatter.DatesFormatter)
+      - [new DatesFormatter(mode, [options])](#new_DatesFormatter.DatesFormatter_new)
 
-<a name="new_DateFormatter_new"></a>
+<a name="new_DatesFormatter_new"></a>
 
-### new DateFormatter()
+### new DatesFormatter()
 
-DateFormatter Class
+DatesFormatter Class
 
-<a name="DateFormatter+format"></a>
+<a name="DatesFormatter+format"></a>
 
-### dateFormatter.format(date) ⇒ <code>string</code>
+### datesFormatter.format(date) ⇒ <code>string</code>
 
 Formats Date object as string
 
-**Kind**: instance method of [<code>DateFormatter</code>](#DateFormatter)  
+**Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>string</code> - String representation of Date
 
 | Param | Type                                     | Description            |
 | ----- | ---------------------------------------- | ---------------------- |
 | date  | <code>Date</code> \| <code>object</code> | Date object to convert |
 
-<a name="DateFormatter+formatRange"></a>
+<a name="DatesFormatter+formatRange"></a>
 
-### dateFormatter.formatRange(dateRange) ⇒ <code>Array.&lt;string&gt;</code>
+### datesFormatter.formatRange(dateRange) ⇒ <code>Array.&lt;string&gt;</code>
 
 Formats date range as strings
 
-**Kind**: instance method of [<code>DateFormatter</code>](#DateFormatter)  
+**Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>Array.&lt;string&gt;</code> - String representation of Dates
 
 | Param     | Type                                                                 | Description           |
 | --------- | -------------------------------------------------------------------- | --------------------- |
 | dateRange | <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code> | Date range to convert |
 
-<a name="DateFormatter+parse"></a>
+<a name="DatesFormatter+parse"></a>
 
-### dateFormatter.parse(dateString, [asDate]) ⇒ <code>Date</code> \| <code>object</code>
+### datesFormatter.parse(dateString, [asDate]) ⇒ <code>Date</code> \| <code>object</code>
 
 Parses date string to Date or Moment object
 
-**Kind**: instance method of [<code>DateFormatter</code>](#DateFormatter)  
+**Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>Date</code> \| <code>object</code> - The parsed date
 
 | Param      | Type                 | Default           | Description                                                     |
@@ -83,13 +75,13 @@ Parses date string to Date or Moment object
 | dateString | <code>string</code>  |                   | Date string to parse                                            |
 | [asDate]   | <code>boolean</code> | <code>true</code> | Whether to output a Date object (true) or Moment object (false) |
 
-<a name="DateFormatter+parseRange"></a>
+<a name="DatesFormatter+parseRange"></a>
 
-### dateFormatter.parseRange(dateStringRange, [asDate]) ⇒ <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code>
+### datesFormatter.parseRange(dateStringRange, [asDate]) ⇒ <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code>
 
 Parses date string arrays to Date or Moment objects
 
-**Kind**: instance method of [<code>DateFormatter</code>](#DateFormatter)  
+**Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code> - The parsed dates
 
 | Param           | Type                              | Default           | Description                                                     |
@@ -97,16 +89,16 @@ Parses date string arrays to Date or Moment objects
 | dateStringRange | <code>Array.&lt;string&gt;</code> |                   | Date strings array to parse                                     |
 | [asDate]        | <code>boolean</code>              | <code>true</code> | Whether to output a Date object (true) or Moment object (false) |
 
-<a name="DateFormatter.DateFormatter"></a>
+<a name="DatesFormatter.DatesFormatter"></a>
 
-### DateFormatter.DateFormatter
+### DatesFormatter.DatesFormatter
 
-**Kind**: static class of [<code>DateFormatter</code>](#DateFormatter)  
-<a name="new_DateFormatter.DateFormatter_new"></a>
+**Kind**: static class of [<code>DatesFormatter</code>](#DatesFormatter)  
+<a name="new_DatesFormatter.DatesFormatter_new"></a>
 
-#### new DateFormatter(mode, [options])
+#### new DatesFormatter(mode, [options])
 
-Creates an instance of DateFormatter.
+Creates an instance of DatesFormatter.
 
 | Param     | Type                                                                                                                              | Default         | Description                                  |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------------------------------------------- |
@@ -126,21 +118,6 @@ Creates an instance of DateFormatter.
 | MONTH | <code>month</code> |
 | WEEK  | <code>week</code>  |
 | DATE  | <code>date</code>  |
-
-<a name="getOption"></a>
-
-## getOption(options, property, defaultValue) ⇒ <code>string</code>
-
-Get options or default values depending on config
-
-**Kind**: global function  
-**Returns**: <code>string</code> - The value to use for the option
-
-| Param        | Type                                               | Description                            |
-| ------------ | -------------------------------------------------- | -------------------------------------- |
-| options      | [<code>FormatterOptions</code>](#FormatterOptions) | The config object                      |
-| property     | <code>string</code>                                | Property to look for                   |
-| defaultValue | <code>string</code>                                | Default value if option is not present |
 
 <a name="FormatterOptions"></a>
 

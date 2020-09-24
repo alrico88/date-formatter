@@ -1,12 +1,12 @@
 {
-  "name": "date-formatter",
+  "name": "dates-formatter-helper",
   "version": "1.0.1",
   "description": "Helper to format and parse dates in different ways",
   "main": "index.js",
   "repository": {
     "url": "https://github.com/alrico88/date-formatter"
   },
-  "author": "Alberto Rico <alberto.rico@gmail.com>",
+  "author": "Alberto Rico <alrico88@gmail.com>",
   "license": "MIT",
   "keywords": ["date", "parse", "format", "year", "month", "date", "week"],
   "devDependencies": {
