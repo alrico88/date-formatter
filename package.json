@@ -1,6 +1,6 @@
 {
   "name": "date-formatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper to format and parse dates in different ways",
   "main": "index.js",
   "repository": {
@@ -25,5 +25,5 @@
     "test": "jest",
     "prepublish": "yarn test",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  },
+  }
 }
