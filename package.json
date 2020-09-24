@@ -1,6 +1,6 @@
 {
   "name": "dates-formatter-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Helper to format and parse dates in different ways",
   "main": "index.js",
   "repository": {
@@ -17,9 +17,6 @@
   },
   "dependencies": {
     "moment": "^2.29.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
    "scripts": {
     "test": "jest",
