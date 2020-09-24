@@ -1,0 +1,29 @@
+{
+  "name": "date-formatter",
+  "version": "1.0.0",
+  "description": "Helper to format and parse dates in different ways",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/alrico88/date-formatter"
+  },
+  "author": "Alberto Rico <alberto.rico@gmail.com>",
+  "license": "MIT",
+  "keywords": ["date", "parse", "format", "year", "month", "date", "week"],
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+   "scripts": {
+    "test": "jest",
+    "prepublish": "yarn test",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+}
