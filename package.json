@@ -1,6 +1,6 @@
 {
   "name": "dates-formatter-helper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Helper to format and parse dates in different ways",
   "main": "index.js",
   "repository": {
