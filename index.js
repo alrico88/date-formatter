@@ -1,4 +1,3 @@
-const isDate = require('date-fns/isDate');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
@@ -57,6 +56,22 @@ class DatesFormatter {
   }
 
   /**
+   * Checks if value is a Date object
+   *
+   * @private
+   * @param {*} value Any element
+   * @returns {boolean} Whether the value is a Date object
+   * @memberof DatesFormatter
+   */
+  _isDate(value) {
+    return (
+      value instanceof Date ||
+      (typeof value === 'object' &&
+        Reflect.apply(Object.prototype, 'toString', value) === '[object Date]')
+    );
+  }
+
+  /**
    * Checks if date is of valid type
    *
    * @private
@@ -65,7 +80,7 @@ class DatesFormatter {
    * @memberof DatesFormatter
    */
   _checkDate(date) {
-    if (!isDate(date)) {
+    if (!this._isDate(date)) {
       throw new Error('Date should be Date object');
     }
   }
@@ -80,7 +95,7 @@ class DatesFormatter {
    */
   _checkDateRange(dateRange) {
     const [start, end] = dateRange;
-    if (!isDate(start) || !isDate(end)) {
+    if (!this._isDate(start) || !this._isDate(end)) {
       throw new Error('Dates should be Date object');
     }
   }
@@ -115,26 +130,28 @@ class DatesFormatter {
    * Formats Date object as string
    *
    * @param {(Date|object)} date Date object to convert
+   * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {string} String representation of Date
    * @memberof DatesFormatter
    */
-  format(date) {
+  format(date, asUTC = true) {
     this._checkDate(date);
     const formatterString = this._getFormatterString();
-    return dayjs(date).format(formatterString);
+    const parsed = asUTC ? dayjs.utc(date) : date;
+    return dayjs(parsed).format(formatterString);
   }
 
   /**
    * Formats date range as strings
    *
    * @param {(Date[]|object[])} dateRange Date range to convert
+   * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {string[]} String representation of Dates
    * @memberof DatesFormatter
    */
-  formatRange(dateRange) {
+  formatRange(dateRange, asUTC = true) {
     this._checkDateRange(dateRange);
-    const formatterString = this._getFormatterString();
-    return dateRange.map((date) => this.format(date, formatterString));
+    return dateRange.map((date) => this.format(date, asUTC));
   }
 
   /**
@@ -148,8 +165,8 @@ class DatesFormatter {
   parse(dateString, asUTC = true) {
     const formatterString = this._getFormatterString();
     const args = [dateString, formatterString];
-    const parsed = asUTC ? dayjs.utc(...args) : dayjs(args);
-    return parsed.toDate();
+    const parsed = asUTC ? dayjs.utc(...args) : dayjs(...args);
+    return dayjs(parsed).toDate();
   }
 
   /**

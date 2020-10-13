@@ -21,8 +21,8 @@
 - [DatesFormatter](#DatesFormatter)
   - [new DatesFormatter()](#new_DatesFormatter_new)
   - _instance_
-    - [.format(date)](#DatesFormatter+format) ⇒ <code>string</code>
-    - [.formatRange(dateRange)](#DatesFormatter+formatRange) ⇒ <code>Array.&lt;string&gt;</code>
+    - [.format(date, [asUTC])](#DatesFormatter+format) ⇒ <code>string</code>
+    - [.formatRange(dateRange, [asUTC])](#DatesFormatter+formatRange) ⇒ <code>Array.&lt;string&gt;</code>
     - [.parse(dateString, [asUTC])](#DatesFormatter+parse) ⇒ <code>Date</code> \| <code>object</code>
     - [.parseRange(dateStringRange, [asUTC])](#DatesFormatter+parseRange) ⇒ <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code>
   - _static_
@@ -37,29 +37,31 @@ DatesFormatter Class
 
 <a name="DatesFormatter+format"></a>
 
-### datesFormatter.format(date) ⇒ <code>string</code>
+### datesFormatter.format(date, [asUTC]) ⇒ <code>string</code>
 
 Formats Date object as string
 
 **Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>string</code> - String representation of Date
 
-| Param | Type                                     | Description            |
-| ----- | ---------------------------------------- | ---------------------- |
-| date  | <code>Date</code> \| <code>object</code> | Date object to convert |
+| Param   | Type                                     | Default           | Description                      |
+| ------- | ---------------------------------------- | ----------------- | -------------------------------- |
+| date    | <code>Date</code> \| <code>object</code> |                   | Date object to convert           |
+| [asUTC] | <code>boolean</code>                     | <code>true</code> | Whether to use date input as UTC |
 
 <a name="DatesFormatter+formatRange"></a>
 
-### datesFormatter.formatRange(dateRange) ⇒ <code>Array.&lt;string&gt;</code>
+### datesFormatter.formatRange(dateRange, [asUTC]) ⇒ <code>Array.&lt;string&gt;</code>
 
 Formats date range as strings
 
 **Kind**: instance method of [<code>DatesFormatter</code>](#DatesFormatter)  
 **Returns**: <code>Array.&lt;string&gt;</code> - String representation of Dates
 
-| Param     | Type                                                                 | Description           |
-| --------- | -------------------------------------------------------------------- | --------------------- |
-| dateRange | <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code> | Date range to convert |
+| Param     | Type                                                                 | Default           | Description                      |
+| --------- | -------------------------------------------------------------------- | ----------------- | -------------------------------- |
+| dateRange | <code>Array.&lt;Date&gt;</code> \| <code>Array.&lt;object&gt;</code> |                   | Date range to convert            |
+| [asUTC]   | <code>boolean</code>                                                 | <code>true</code> | Whether to use date input as UTC |
 
 <a name="DatesFormatter+parse"></a>
 

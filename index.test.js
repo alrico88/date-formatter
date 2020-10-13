@@ -104,4 +104,14 @@ describe('Check internal methods', () => {
     const formatter = new DatesFormatter('unknown mode');
     expect(typeof formatter._getFormatterString()).toBe('string');
   });
+
+  test('_isDate should detect when element is not a Date', () => {
+    const formatter = new DatesFormatter();
+    expect(formatter._isDate('Not a date')).toBe(false);
+  });
+
+  test('_isDate should detect when element is a Date', () => {
+    const formatter = new DatesFormatter();
+    expect(formatter._isDate(new Date())).toBe(true);
+  });
 });
