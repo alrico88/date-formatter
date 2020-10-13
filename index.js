@@ -75,7 +75,7 @@ class DatesFormatter {
    * Checks if date is of valid type
    *
    * @private
-   * @param {(Date|object)} date Date to check
+   * @param {*} date Date to check
    * @returns {void}
    * @memberof DatesFormatter
    */
@@ -89,7 +89,7 @@ class DatesFormatter {
    * Checks if date range is of valid type
    *
    * @private
-   * @param {(Date[]|object[])} dateRange Date to check
+   * @param {any[]} dateRange Date to check
    * @returns {void}
    * @memberof DatesFormatter
    */
@@ -129,7 +129,7 @@ class DatesFormatter {
   /**
    * Formats Date object as string
    *
-   * @param {(Date|object)} date Date object to convert
+   * @param {Date} date Date object to convert
    * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {string} String representation of Date
    * @memberof DatesFormatter
@@ -144,7 +144,7 @@ class DatesFormatter {
   /**
    * Formats date range as strings
    *
-   * @param {(Date[]|object[])} dateRange Date range to convert
+   * @param {Date[]} dateRange Date range to convert
    * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {string[]} String representation of Dates
    * @memberof DatesFormatter
@@ -159,7 +159,7 @@ class DatesFormatter {
    *
    * @param {string} dateString Date string to parse
    * @param {boolean} [asUTC=true] Whether to use date input as UTC
-   * @returns {(Date|object)} The parsed date
+   * @returns {Date} The parsed date
    * @memberof DatesFormatter
    */
   parse(dateString, asUTC = true) {
@@ -178,9 +178,7 @@ class DatesFormatter {
    * @memberof DatesFormatter
    */
   parseRange(dateStringRange, asUTC = true) {
-    const formatterString = this._getFormatterString();
-    return dateStringRange.map((dateString) =>
-      this.parse(dateString, formatterString, asUTC));
+    return dateStringRange.map((dateString) => this.parse(dateString, asUTC));
   }
 }
 
