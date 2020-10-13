@@ -1,4 +1,7 @@
-const moment = require('moment');
+const isDate = require('date-fns/isDate');
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+dayjs.extend(utc);
 
 /**
  * @typedef FormatterOptions
@@ -33,7 +36,7 @@ class DatesFormatter {
    */
   constructor(mode, options = {}) {
     this.dateFormat = this._getOption(options, 'dateFormat', 'YYYYMMDD');
-    this.weekFormat = this._getOption(options, 'weekFormat', 'YYYYWW');
+    this.weekFormat = this._getOption(options, 'weekFormat', 'YYYYMM');
     this.monthFormat = this._getOption(options, 'monthFormat', 'YYYYMM');
     this.yearFormat = this._getOption(options, 'yearFormat', 'YYYY');
     this.mode = mode;
@@ -62,8 +65,8 @@ class DatesFormatter {
    * @memberof DatesFormatter
    */
   _checkDate(date) {
-    if (!moment.isDate(date) && !moment.isMoment(date)) {
-      throw new Error('Date should be Date or MomentJS object');
+    if (!isDate(date)) {
+      throw new Error('Date should be Date object');
     }
   }
 
@@ -77,24 +80,9 @@ class DatesFormatter {
    */
   _checkDateRange(dateRange) {
     const [start, end] = dateRange;
-    if (
-      (!moment.isDate(start) && !moment.isMoment(start)) ||
-      (!moment.isDate(end) && !moment.isMoment(end))
-    ) {
-      throw new Error('Dates should be Date or MomentJS object');
+    if (!isDate(start) || !isDate(end)) {
+      throw new Error('Dates should be Date object');
     }
-  }
-
-  /**
-   * Gets instance depending on if it's already a moment object
-   *
-   * @private
-   * @param {(Date|object)} date Date to check
-   * @returns {object} moment instance
-   * @memberof DatesFormatter
-   */
-  _getInstance(date) {
-    return moment.isMoment(date) === true ? date : moment(date);
   }
 
   /**
@@ -133,8 +121,7 @@ class DatesFormatter {
   format(date) {
     this._checkDate(date);
     const formatterString = this._getFormatterString();
-    const instance = this._getInstance(date);
-    return instance.format(formatterString);
+    return dayjs(date).format(formatterString);
   }
 
   /**
@@ -147,38 +134,36 @@ class DatesFormatter {
   formatRange(dateRange) {
     this._checkDateRange(dateRange);
     const formatterString = this._getFormatterString();
-    return dateRange.map((date) =>
-      this._getInstance(date).format(formatterString));
+    return dateRange.map((date) => this.format(date, formatterString));
   }
 
   /**
-   * Parses date string to Date or Moment object
+   * Parses date string to Date
    *
    * @param {string} dateString Date string to parse
-   * @param {boolean} [asDate=true] Whether to output a Date object (true) or Moment object (false)
+   * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {(Date|object)} The parsed date
    * @memberof DatesFormatter
    */
-  parse(dateString, asDate = true) {
+  parse(dateString, asUTC = true) {
     const formatterString = this._getFormatterString();
-    const parsed = moment.utc(dateString, formatterString);
-    return asDate ? parsed.toDate() : parsed;
+    const args = [dateString, formatterString];
+    const parsed = asUTC ? dayjs.utc(...args) : dayjs(args);
+    return parsed.toDate();
   }
 
   /**
-   * Parses date string arrays to Date or Moment objects
+   * Parses date string arrays to Date
    *
    * @param {string[]} dateStringRange Date strings array to parse
-   * @param {boolean} [asDate=true] Whether to output a Date object (true) or Moment object (false)
+   * @param {boolean} [asUTC=true] Whether to use date input as UTC
    * @returns {(Date[]|object[])} The parsed dates
    * @memberof DatesFormatter
    */
-  parseRange(dateStringRange, asDate = true) {
+  parseRange(dateStringRange, asUTC = true) {
     const formatterString = this._getFormatterString();
-    return dateStringRange.map((dateString) => {
-      const parsed = moment.utc(dateString, formatterString);
-      return asDate ? parsed.toDate() : parsed;
-    });
+    return dateStringRange.map((dateString) =>
+      this.parse(dateString, formatterString, asUTC));
   }
 }
 

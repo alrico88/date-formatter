@@ -8,7 +8,15 @@
   },
   "author": "Alberto Rico <alrico88@gmail.com>",
   "license": "MIT",
-  "keywords": ["date", "parse", "format", "year", "month", "date", "week"],
+  "keywords": [
+    "date",
+    "parse",
+    "format",
+    "year",
+    "month",
+    "date",
+    "week"
+  ],
   "devDependencies": {
     "coveralls": "^3.1.0",
     "eslint": "^5.16.0",
@@ -16,9 +24,10 @@
     "jest": "^26.4.2"
   },
   "dependencies": {
-    "moment": "^2.29.0"
+    "date-fns": "^2.16.1",
+    "dayjs": "^1.9.3"
   },
-   "scripts": {
+  "scripts": {
     "test": "jest",
     "prepublish": "yarn test",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"

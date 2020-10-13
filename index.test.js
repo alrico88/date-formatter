@@ -1,5 +1,4 @@
 const {DatesFormatter, modes} = require('./index');
-const moment = require('moment');
 
 describe('Test formatting methods with default options', () => {
   test('Formatting default date values should return expected strings', () => {
@@ -87,13 +86,6 @@ describe('Check internal methods', () => {
     }).toThrow();
   });
 
-  test('Moment objects should not throw error', () => {
-    const formatter = new DatesFormatter(modes.DATE);
-    expect(() => {
-      formatter.format(moment());
-    }).not.toThrow();
-  });
-
   test('Valid Date objects should not throw error', () => {
     const formatter = new DatesFormatter(modes.DATE);
     expect(() => {
@@ -106,19 +98,6 @@ describe('Check internal methods', () => {
     expect(() => {
       formatter.formatRange(['Alberto', new Date()]);
     }).toThrow();
-  });
-
-  test('Mixing types in Date ranges made of Moment objects and Dates should not throw error', () => {
-    const formatter = new DatesFormatter(modes.DATE);
-    expect(() => {
-      formatter.formatRange([moment('20200101', 'YYYYMMDD'), new Date()]);
-    }).not.toThrow();
-  });
-
-  test('_getInstance method should return a moment instance', () => {
-    const formatter = new DatesFormatter(modes.DATE);
-    const instance = formatter._getInstance(new Date());
-    expect(moment.isMoment(instance)).toBe(true);
   });
 
   test('_getFormatterString method should always return a string, no matter the mode', () => {
